@@ -1,0 +1,92 @@
+package com.useandget.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Segment {
+
+    @Id
+    private Integer segmentId;
+    @Column(nullable = false)
+    private String Name;
+    @Column(nullable = false)
+    private String consumptionType;
+    @Column(nullable = false)
+    private Integer threshold;
+    @Column(nullable = false)
+    private Integer maxRetries;
+    @Column(nullable = false)
+    private Integer cooldownDays;
+
+    @ManyToOne
+    @JoinColumn(name="gift_id",nullable = false)
+    private Gift gift;
+
+    public Segment(Integer segmentId, String name, String consumptionType, Integer threshold, Integer maxRetries, Integer cooldownDays, Gift gift) {
+        this.segmentId = segmentId;
+        Name = name;
+        this.consumptionType = consumptionType;
+        this.threshold = threshold;
+        this.maxRetries = maxRetries;
+        this.cooldownDays = cooldownDays;
+        this.gift = gift;
+    }
+
+    public Segment() {}
+
+    public Integer getSegmentId() {
+        return segmentId;
+    }
+
+    public void setSegmentId(Integer segmentId) {
+        this.segmentId = segmentId;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getConsumptionType() {
+        return consumptionType;
+    }
+
+    public void setConsumptionType(String consumptionType) {
+        this.consumptionType = consumptionType;
+    }
+
+    public Integer getThreshold() {
+        return threshold;
+    }
+
+    public void setThreshold(Integer threshold) {
+        this.threshold = threshold;
+    }
+
+    public Integer getMaxRetries() {
+        return maxRetries;
+    }
+
+    public void setMaxRetries(Integer maxRetries) {
+        this.maxRetries = maxRetries;
+    }
+
+    public Integer getCooldownDays() {
+        return cooldownDays;
+    }
+
+    public void setCooldownDays(Integer cooldownDays) {
+        this.cooldownDays = cooldownDays;
+    }
+
+    public Gift getGift() {
+        return gift;
+    }
+
+    public void setGift(Gift gift) {
+        this.gift = gift;
+    }
+}
