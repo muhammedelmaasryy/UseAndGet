@@ -10,7 +10,7 @@ public class Segment {
     @Column(nullable = false)
     private String Name;
     @Column(nullable = false)
-    private String consumptionType;
+    private ConsumptionType consumptionType;
     @Column(nullable = false)
     private Integer threshold;
     @Column(nullable = false)
@@ -22,7 +22,7 @@ public class Segment {
     @JoinColumn(name="gift_id",nullable = false)
     private Gift gift;
 
-    public Segment(Integer segmentId, String name, String consumptionType, Integer threshold, Integer maxRetries, Integer cooldownDays, Gift gift) {
+    public Segment(Integer segmentId, String name, ConsumptionType consumptionType, Integer threshold, Integer maxRetries, Integer cooldownDays, Gift gift) {
         this.segmentId = segmentId;
         Name = name;
         this.consumptionType = consumptionType;
@@ -50,11 +50,11 @@ public class Segment {
         Name = name;
     }
 
-    public String getConsumptionType() {
+    public ConsumptionType getConsumptionType() {
         return consumptionType;
     }
 
-    public void setConsumptionType(String consumptionType) {
+    public void setConsumptionType(ConsumptionType consumptionType) {
         this.consumptionType = consumptionType;
     }
 
