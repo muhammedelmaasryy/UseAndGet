@@ -9,4 +9,8 @@ import java.util.Optional;
 public interface OfferRepository extends JpaRepository<Offer, Integer> {
 
     Optional<Offer> findByCustomer_PhoneNumberAndState(String phoneNumber, State state);
+
+    Optional<Offer> findTopByCustomerOrderByOfferedAtDescOfferIdDesc(Customer customer);
+
+    Optional<Offer> findTopByCustomerCustomerIdOrderByOfferedAtDescOfferIdDesc(Integer customerId);
 }

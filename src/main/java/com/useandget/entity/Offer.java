@@ -5,26 +5,42 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "offer")
 public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "offer_id")
     private Integer offerId;
-    @Column(nullable = false)
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state", nullable = false)
     private State state;
-    @Column(nullable = false)
+
+    @Column(name = "retry_count", nullable = false)
     private Integer retryCount = 0;
+
+    @Column(name = "offered_at")
     private LocalDateTime offeredAt;
+
+    @Column(name = "evaluated_at")
     private LocalDateTime evaluatedAt;
+
+    @Column(name = "cooldown_until")
     private LocalDateTime cooldownUntil;
+
+    @Column(name = "rewarded_at")
     private LocalDateTime rewardedAt;
 
     @ManyToOne
-    @JoinColumn(name="customer_id",nullable = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name="segment_id",nullable = false)
+    @JoinColumn(name = "segment_id", nullable = false)
     private Segment segment;
+
+    public Offer() {
+    }
 
     public Offer(Integer offerId, State state, Integer retryCount, LocalDateTime offeredAt, LocalDateTime evaluatedAt, LocalDateTime cooldownUntil, LocalDateTime rewardedAt, Customer customer, Segment segment) {
         this.offerId = offerId;
