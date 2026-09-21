@@ -1,7 +1,12 @@
 package com.useandget.repository;
 
 import com.useandget.entity.Offer;
+import com.useandget.entity.State;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface OfferRepository extends JpaRepository<Offer, Integer> {
+
+    Optional<Offer> findByCustomer_PhoneNumberAndState(String phoneNumber, State state);
 }

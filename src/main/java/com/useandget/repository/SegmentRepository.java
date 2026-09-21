@@ -1,7 +1,11 @@
 package com.useandget.repository;
 
-import com.useandget.entity.Customer;
+import com.useandget.entity.Segment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SegmentRepository extends JpaRepository<Customer, Integer> {
+import java.util.Optional;
+
+public interface SegmentRepository extends JpaRepository<Segment, Integer> {
+
+    Optional<Segment> findByNameIgnoreCase(String name);
 }

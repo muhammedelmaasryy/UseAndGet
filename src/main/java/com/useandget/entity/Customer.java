@@ -16,6 +16,8 @@ public class Customer {
     @JoinColumn(name = "segment_id",nullable = false)
     private Segment segment;
 
+    public Customer() {}
+
     public Customer(Integer customerId, String phoneNumber, String name, Segment segment) {
         this.customerId = customerId;
         this.phoneNumber = phoneNumber;
