@@ -6,9 +6,11 @@ import jakarta.persistence.*;
 public class Segment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer segmentId;
     @Column(nullable = false)
-    private String Name;
+    private String name;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ConsumptionType consumptionType;
     @Column(nullable = false)
@@ -24,7 +26,7 @@ public class Segment {
 
     public Segment(Integer segmentId, String name, ConsumptionType consumptionType, Integer threshold, Integer maxRetries, Integer cooldownDays, Gift gift) {
         this.segmentId = segmentId;
-        Name = name;
+        this.name = name;
         this.consumptionType = consumptionType;
         this.threshold = threshold;
         this.maxRetries = maxRetries;
@@ -43,11 +45,11 @@ public class Segment {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public ConsumptionType getConsumptionType() {
